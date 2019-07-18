@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+	<meta charset="UTF-8">
+	<title>OM课堂-大三快三步</title>
+	<script src="__STATIC__/class/js/fontSize.js"></script>
+	<link rel="stylesheet" href="__STATIC__/class/css/bootstrap.min.css">
+	<link rel="stylesheet" href="__STATIC__/class/css/style.css">
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="main">
+			<div class="homeImg1">
+				<img src="__STATIC__/class/images/home1.jpg">
+			</div>
+			<div class="homeImg2">
+				<img src="__STATIC__/class/images/home2.jpg">
+			</div>
+			<div class="homeImg3">
+				<img src="__STATIC__/class/images/home3.jpg">
+			</div>
+			<div class="homeImg4">
+				<img src="__STATIC__/class/images/home4.jpg">
+			</div>
+			<div class="homeImg5">
+				<img src="__STATIC__/class/images/home5.jpg">
+			</div>
+			<div class="homeImg6">
+				<img src="__STATIC__/class/images/home6.jpg">
+			</div>
+			<div class="homeImg7">
+				<img src="__STATIC__/class/images/home7.jpg">
+			</div>
+			<div class="homeImg8">
+				<img src="__STATIC__/class/images/home8.jpg">
+			</div>
+			<div class="homeImg9">
+				<img src="__STATIC__/class/images/home9.jpg">
+			</div>
+			<div class="homeImg10">
+				<img src="__STATIC__/class/images/home10.jpg">
+			</div>
+			<div class="homeImg11">
+				<img src="__STATIC__/class/images/home11.jpg">
+			</div>
+			<div class="homeImg12">
+				<img src="__STATIC__/class/images/home12.jpg">
+			</div>
+			<div class="homeImg13">
+				<img src="__STATIC__/class/images/home13.jpg">
+			</div>
+			<div class="homeImg14">
+				<img src="__STATIC__/class/images/home14.jpg">
+			</div>
+			<div class="homeImg15">
+				<img src="__STATIC__/class/images/home15.jpg">
+			</div>
+			<div class="homeImg16">
+				<img src="__STATIC__/class/images/home16.jpg">
+			</div>
+			<div class="homeImg17">
+				<img src="__STATIC__/class/images/home17.jpg">
+			</div>
+			<div class="homeImg18">
+				<img src="__STATIC__/class/images/home18.jpg">
+			</div>
+			<div class="homeImg19">
+				<img src="__STATIC__/class/images/home19.jpg">
+			</div>
+		</div>
+		<div class="menu">
+			<div class="menuBox">
+				<div class="container_m">
+					<span class="count">合计：￥0.0</span>
+					<div class="menu-btn">
+						<button class="menu1" data-toggle="modal" data-target="#myModal">课程选择</button>
+						<form name="form22" action="{:url('index/order')}" method="post" onsubmit="return checkForm() ">
+							<input type="hidden"  name="price" id="price" value="">
+							<input type="hidden" name="content" id="content" value="">
+							<button type="submit" class="menu2">立即报名</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+
+					<div class="modal-body">
+						<!-- <div class="table_t">
+
+							<span>点击选择报名课程</span>
+						</div>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<td></td>
+									<td>周一</td>
+									<td>周二</td>
+									<td>周三</td>
+									<td>周四</td>
+									<td>周五</td>
+								</tr>
+							</thead>
+							<tbody id='tableData'>
+
+							</tbody>
+						</table> -->
+						<div class="table_t">
+							<img src="__STATIC__/class/images/selTit.png">
+						</div>
+						<div class="selectClass">
+							<div class="select-item">
+								<h4>OM课堂：（共16节）</h4>
+								<!-- <p class="selectBtn">
+									<span class="className">大三快三步</span>
+									<span class="oldprice">￥699</span>
+									<span class="price">￥349</span>
+								<p> -->
+							</div>
+							<div class="select-item">
+								<h4 style="position: absolute;margin-top: 1.45rem;">限时免费：（共1节）</h4>
+								<!-- <p class="selectBtn">
+								<p> -->
+							</div>
+
+						</div>
+					<!-- 	<table class="table table-bordered" style="width:5.5rem;max-width: 5.5rem;margin:0 auto;">
+							<thead>
+								<tr>
+									<td></td>
+									<td>周一</td>
+									<td>周二</td>
+									<td>周三</td>
+									<td>周四</td>
+									<td>周五</td>
+								</tr>
+							</thead>
+							<tbody>
+                               <tr>
+                               	<td>
+                               		<span class="className">大三快三步</span>
+									<span class="oldprice">￥699</span>
+									<span class="price">￥349</span>
+                               	</td>
+                               </tr>
+                               <tr>
+                               	<td>
+                               		<span class="className">大三快三步</span>
+									<span class="oldprice">￥699</span>
+									<span class="price">￥349</span>
+                               	</td>
+                               </tr>
+							</tbody>
+						</table> -->
+						<table class="table table-bordered">
+						<!-- 	<thead>
+								<tr>
+									<td></td>
+									<td>周一</td>
+									<td>周二</td>
+									<td>周三</td>
+									<td>周四</td>
+									<td>周五</td>
+								</tr>
+							</thead> -->
+							<tbody id='tableData'>
+
+							</tbody>
+						</table>
+					</div>
+					<div class="modal-footer" data-dismiss="modal" id="que">
+						<button type="button" class="btn btn-primary" data-dismiss="modal" id="que"></button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--弹出框是否选择课程-->
+		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+
+					<div class="modal-body">
+						<div class="modal-cont">
+							<p>请先选择课程</p>
+
+							<div class="modal_footer">
+								<button type="button" data-dismiss="modal">确定</button>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="__STATIC__/class/js/jquery.min.js"></script>
+	<script src="__STATIC__/class/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var num = 0;
+			var shu = '';
+			$('#tableData').delegate('input','click',function(e){
+
+				if($(this).parent().hasClass("active")){
+					$(this).parent().removeClass("active");
+				}else{
+					$(this).parent().addClass("active");
+				}
+
+			});
+			$('#que').on('click',function(){
+            var checkID = [];//定义一个空数组
+            console.log(shu)
+            shu = '';
+            $("input[name='ce']").each(function(i){
+            	if($(this).get(0).checked){
+            		console.log($(this).val())
+                  // checkID=checkID*1+$(this).val()*1
+                  checkID = ((checkID*1)+($(this).val().replace(/[^\d+\.]/g,'')*1)).toFixed(1)
+                    // shu = shu + "课程名称："+$(this).attr('data-name')+", 课程价格："+$(this).val().replace(/[^\d+\.]/g,'')+"|";
+                    shu = shu +$(this).attr('data-name')+"-";
+                }
+
+            });
+            shu = shu.substring(0,shu.length-1);
+            var ser=$('.container_m').children('span').text();
+            $('.count').text('合计：￥'+checkID);
+            $('#price').attr('value',checkID);
+            $('#content').attr('value',shu);
+        })
+
+		});
+		function checkForm(){
+			console.log(111)
+             // $("input[type='hidden']").each(function(n){
+             	if($('#price').val()==""){
+             		$('#myModal2').modal()
+             		return false;
+             	}else{
+             		return true;
+             	}
+            // });
+
+        }
+
+	function timestampToTime(timestamp) {
+        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = date.getSeconds();
+        return Y+M+D;
+    }
+
+        var url = "{:url('Index/Index2')}";
+        $.get(url,function(result){
+        	var data = JSON.parse(result);
+        	console.log(data)
+        //第二种： 动态创建表格的方式，使用动态创建dom对象的方式
+            //清空所有的子节点
+            $("#tableData").empty();
+            $.each(data,function(index,item){
+            	console.log(item['course']);
+            	// var $trTemp = $("<tr></tr>");
+            	// $trTemp.append("<td>"+ index +"</td>");
+            	// $.each(value,function(index,item){
+            	// 	console.log(index.course)
+
+            	
+            	// })
+            		if (item['course']) {
+            			if(item.status == 0){
+            				 $("#tableData").append(
+            					"<tr>"+
+            					"<td class='notActive'><span class='courseName'>"+item.course+"</span>"+
+            					"<span class='line'>"+item.oldprice+"</span>"+
+            					"<span class='fee'>￥"+item.price+"</span>"+
+            					"<span class='date'>"+ timestampToTime(new Date(parseInt(item.time))) +"</span>"+
+            					"</td>"+
+            					"</tr>"
+            					);
+            			}else{
+
+            				 $("#tableData").append(
+            					"<tr>"+
+            					"<td>"+
+            					"<input type='checkbox' style='opacity:0' data-name="+item.course+" name='ce' value="+item.price+" data-id="+item.id+">"+
+            					"<span class='courseName'>"+item.course+"</span>"+
+            					"<span class='line'>"+item.oldprice+"</span>"+
+            					"<span class='fee'>￥"+item.price+"</span>"+
+            					"<span class='date'>"+ timestampToTime(new Date(parseInt(item.time)))+"</span>"+
+            					"</td>"+
+            					"</tr>"
+            					);
+            			}
+            		}else{
+
+            			 $("#tableData").append(
+            				"<tr><td style='background:none'><span class='courseName'></span><span class='line'></span><span class='fee'></span></td></tr>"
+            				);
+            		}
+            	// $trTemp.appendTo("#tableData");
+            })
+
+        })
+    </script>
+
+</body>
+</html>

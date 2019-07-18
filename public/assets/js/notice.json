@@ -1,0 +1,6 @@
+{
+    "data": [
+    {"Name":"","Notice":"审核通知","image":"./img/notice_img_01.png" , "Content":"您的提现订单易提交成功，工作人员尽力帮你解决","Date":"2018/04/14"},
+	{"Name":"","Notice":"体现通知", "image":"./img/notice_img_02.png" , "Content":"您的资料已成功通过了我们的系统审核中","Date":"2018/04/14"}
+    ]
+    }

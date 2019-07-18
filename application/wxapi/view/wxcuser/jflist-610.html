@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<title>积分详情</title>
+		<link rel="stylesheet" href="css/common.css" type="text/css"/>
+		<link rel="stylesheet" href="css/jflist.css" type="text/css"/><!--需要引用610版本的css-->
+		<script type="text/javascript"  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/mobilesp.js" ></script>
+        <!-- <script type="text/javascript" src="js/jfList.js"></script> -->
+         <!--积分js和列表上拉刷新js-->
+
+	</head>
+	<body>
+		<div class="body">
+			<div class="head">
+				<a href="personal.html">
+                    <div class="h_box">
+                        <div class="imgbox"><img src="img/tx.png" /> </div>
+                        <div class="head_mid">
+                            <h1>emm wong</h1>
+                            <p>圈子ID:<span>12354567</span> <span class="ew_img"><img src="img/opcityimg.png" /> </span> </p>
+                        </div>
+                        <div class="imgbox2"><img src="img/jt2.png" /> </div>
+                    </div>
+					<p class="jf">我的积分：<span>345</span> </p>
+                </a>
+            </div>
+            <div id="wrapper">
+                <div class="list_box" id="scroller">
+                    <ul id="ul">
+                        <li>
+                            <span>
+                                我邀请的xxxx，用掉
+                            </span>
+                            <div class="les">
+                                <span class="jian"> -1 </span>
+                            </div>
+                        </li>
+                        <li>
+                            <span>
+                                我邀请的xxxx，获得
+                            </span>
+                            <div class="les">
+                                <span class="jia"> +1 </span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="pull-loading">
+                        上拉加载
+                    </div>
+                </div>
+               <script type="text/javascript" src="js/iscroll.js"></script><!--和下面的js配合使用-->
+               <script type="text/javascript">
+                var myscroll = new  iScroll("wrapper", {
+                    onScrollMove: function () { //拉动时
+                        //上拉加载
+                        if (this.y < this.maxScrollY) {
+                            $(".pull-loading").html("释放加载");
+                            $(".pull-loading").addClass("loading");
+                        } else {
+                            $(".pull-loading").html("上拉加载");
+                            $(".pull-loading").removeClass("loading");
+                        }
+                    },
+                    onScrollEnd: function () { //拉动结束时
+                        //上拉加载
+                        if ($(".pull-loading").hasClass('loading')) {
+                            $(".pull-loading").html("加载中...");
+                            pullOnLoad();
+                        }
+                    }
+                });
+                //上拉加载函数,ajax
+                var num = 0;
+                var page = 3; //每次加载3条
+
+                //初始化先加载三条数据
+                pullOnLoad();
+
+                function pullOnLoad() {
+                    setTimeout(function () {
+                        $.ajax({
+                            url: "http://wx.lian17.com/wxapi/wxcuserScoreLog/getscore",
+                            type: "get",
+                            dataType: 'json',
+                            success: function (data) {
+                                var data_length = data.length;//数据的总长度
+                                var remainder = data_length % page;//余数
+                                if ( data_length >= (num+page)){
+                                    for (var j = num; j < num + page; j++){
+                                        var text = data[j].title;
+                                        $("#scroller ul").append("<li>"+ text +"</li>");
+                                    }
+                                    num+=page;
+                                }else if (remainder != 0 && data_length-num == remainder){
+                                    for (var j = num; j < num + remainder; j++){
+                                        var text = data[j].title;
+                                        $("#scroller ul").append("<li>"+ text +"</li>");
+                                    }
+                                    num+=page;
+                                }else{
+                                    $('.pull-loading').html("没有了哟");
+                                }
+                                myscroll.refresh();
+                            },
+                            error: function () {
+                                console.log("出错了");
+                            }
+                        });
+                        myscroll.refresh();
+                    }, 500);
+                }
+            </script>
+            </div>
+		</div>
+
+	</body>
+</html>

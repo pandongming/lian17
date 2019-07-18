@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+        <title>上传凭证</title>
+        <link rel="stylesheet" href="__CDN__/assets/css/common.css" type="text/css"/>
+        <link rel="stylesheet" href="__CDN__/assets/css/shangchuan.css" type="text/css"/>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="__CDN__/assets/js/mobilesp.js" ></script>
+        <script src="__CDN__/assets/js/mui.min.js" type="text/javascript"></script>
+        <!-- picker组件 -->
+        <link rel="stylesheet" href="__CDN__/assets/css/mui.picker.css" type="text/css"/>
+        <link rel="stylesheet" href="__CDN__/assets/css/mui.poppicker.css" type="text/css"/>
+        <script src="__CDN__/assets/js/mui.picker.min.js" type="text/javascript"></script>
+        <!--时间选择器-->
+        <script src="__CDN__/assets/js/datePicker.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+         <!-- 引入样式 -->
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+        <!-- 引入组件库 -->
+        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    </head>
+    <body>
+        <div id="Wrapper">
+            <h1>请上传凭证的照片</h1>
+            <div class="content1" id="content1">
+                <!--<ul class="updata_ul">
+                    <li onclick="updata_img()" class="updata_li">
+                        <img src="img/updata_img.png" alt="">
+                            <span>凭照图片</span>
+                    </li>
+                    <li onclick="updata_img()" class="updata_li">
+                            <img src="img/updata_img.png" alt="">
+                                <span>凭照图片</span>
+                        </li>
+                </ul>-->
+                <el-upload
+                  action="#"
+                  list-type="picture-card"
+                  :auto-upload="false">
+                    <i slot="default" class="el-icon-plus"></i>
+                    <div slot="file" slot-scope="{file}">
+                      <img
+                        class="el-upload-list__item-thumbnail"
+                        :src="file.url" alt=""
+                      >
+                      <span class="el-upload-list__item-actions">
+                        <span
+                          class="el-upload-list__item-preview"
+                          v-on:click="handlePictureCardPreview(file)">
+                          <i class="el-icon-zoom-in"></i>
+                        </span>
+                        <span
+                          v-if="!disabled"
+                          class="el-upload-list__item-delete"
+                          v-on:click="handleDownload(file)" >
+                          <i class="el-icon-download"></i>
+                        </span>
+                        <span v-if="!disabled" class="el-upload-list__item-delete" v-on:click="handleRemove(file)">
+                          <i class="el-icon-delete"></i>
+                        </span>
+                      </span>
+                    </div>
+                </el-upload>
+                <el-dialog :visible.sync="dialogVisible">
+                  <img width="100%" :src="dialogImageUrl" alt="">
+                </el-dialog>
+            </div>
+            <h1>准确填写基本信息</h1>
+            <div class="content2">
+                    <ul class="conter  conter2">
+                            <li id='showUserPicker1'>
+                                <label>凭证类型</label>
+                                <div id='userResult2' class="cl ui-alert">
+                                    <input type="tel" placeholder="请填写"  name="filetype" id="lx"/>
+                                </div>
+
+                            </li>
+                            <li>
+                                <label>凭证号码</label>
+                                <input type="tel" name="tradeNo" placeholder="请填写"/>
+                            </li>
+                            <li>
+                                <label>凭证日期</label>
+                                <input type="text" id="demo1" name="tradeDate" placeholder="请选择日期" />
+                            </li>
+                            <li>
+                                <label>消费金额</label>
+                                <input type="tel" name="tradeFee" placeholder="请填写"/>
+                            </li>
+                            <li id='showUserPicker'>
+                                <label>消费类型</label>
+                                <div id="userResult" class="cl ui-alert">
+                                    <input type="tel" placeholder="请选择消费类型" name="tradeType" id="lx"/>
+                                </div>
+
+                            </li>
+                            <li >
+                                <label>商家名称</label>
+                                <input type="tel" name="cid" placeholder="查找商家 >" readonly="readonly"/>
+
+                            </li>
+                        </ul>
+                        <div class="updata_btn_div_two">
+                            <input type="button" class="updata_btn_two" value="提交">
+                        </div>
+
+            </div>
+        </div>
+        <script type="text/javascript">
+            (function($, doc) {
+                $.init();
+                $.ready(function() {
+
+                    /**
+                     * 获取对象属性的值
+                     * 主要用于过滤三级联动中，可能出现的最低级的数据不存在的情况，实际开发中需要注意这一点；
+                     * @param {Object} obj 对象
+                     * @param {String} param 属性名
+                     */
+                    var _getParam = function(obj, param) {
+                        return obj[param] || '';
+                    };
+                    var userPicker = new $.PopPicker();
+                    userPicker.setData([{
+                        value: '0',
+                        text: '亲人'
+                    }, {
+                        value: '1',
+                        text: '同学'
+                    }, {
+                        value: '2',
+                        text: '同事'
+                    }, {
+                        value: '3',
+                        text: '老师'
+                    }, {
+                        value: '4',
+                        text: '朋友'
+                    }, {
+                        value: '5',
+                        text: '上司'
+                    }]);
+                    var showUserPickerButton = doc.getElementById('showUserPicker');
+                    var userResult = doc.getElementById('userResult');
+                    showUserPickerButton.addEventListener('tap', function(event) {
+                        userPicker.pickers[0].setSelectedIndex(2, 2000);
+                        userPicker.show(function(SelectedItem) {
+                            userResult.innerText = SelectedItem[0].text;
+                            //返回 false 可以阻止选择框的关闭
+                            //return false;
+                        });
+                    }, false);
+
+                });
+            })(mui, document);
+
+        </script>
+        <script type="text/javascript">
+                (function($, doc) {
+                $.init();
+                $.ready(function() {
+
+                    /**
+                     * 获取对象属性的值
+                     * 主要用于过滤三级联动中，可能出现的最低级的数据不存在的情况，实际开发中需要注意这一点；
+                     * @param {Object} obj 对象
+                     * @param {String} param 属性名
+                     */
+                    var _getParam = function(obj, param) {
+                        return obj[param] || '';
+                    };
+                    var userPicker2 = new $.PopPicker();
+                    userPicker2.setData([{
+                        value: '0',
+                        text: '亲人'
+                    }, {
+                        value: '1',
+                        text: '同学'
+                    }, {
+                        value: '2',
+                        text: '同事'
+                    }, {
+                        value: '3',
+                        text: '老师'
+                    }, {
+                        value: '4',
+                        text: '朋友'
+                    }, {
+                        value: '5',
+                        text: '上司'
+                    }]);
+                    var showUserPickerButton = doc.getElementById('showUserPicker1');
+                    var userResult = doc.getElementById('userResult2');
+                    showUserPickerButton.addEventListener('tap', function(event) {
+                        userPicker2.pickers[0].setSelectedIndex(2, 2000);
+                        userPicker2.show(function(SelectedItem) {
+                            userResult2.innerText = SelectedItem[0].text;
+                            //返回 false 可以阻止选择框的关闭
+                            //return false;
+                        });
+                    }, false);
+
+                });
+            })(mui, document);
+        </script>
+        <script>
+        var calendar = new datePicker();
+        calendar.init({
+            'trigger': '#demo1', /*按钮选择器，用于触发弹出插件*/
+            'type': 'date',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+            'minDate':'1900-1-1',/*最小日期*/
+            'maxDate':'2100-12-31',/*最大日期*/
+            'onSubmit':function(){/*确认时触发事件*/
+                var theSelectData=calendar.value;
+            },
+            'onClose':function(){/*取消时触发事件*/
+            }
+        });
+
+    </script>
+    <script>
+        var vm=new Vue({
+            el:"#content1",
+             data:function() {
+                return {
+                    dialogImageUrl: '',
+                    dialogVisible: false,
+                    disabled: false
+                  };
+                },
+                methods:{
+                  handleRemove:function(file) {
+                    console.log(file);
+                  },
+                  handlePictureCardPreview:function(file) {
+                    this.dialogImageUrl = file.url;
+                    this.dialogVisible = true;
+                  },
+                  handleDownload:function(file) {
+                    console.log(file);
+                  }
+                }
+             })
+
+    </script>
+    <script>
+        $(function(){
+            $(".el-upload--picture-card").click(function(){
+                $(".el-upload--picture-card").css({'width':'4rem','height':'4rem','line-height':'4rem',"margin":'0.7rem 0.2rem 0.2rem 0.75rem'})
+            })
+        })
+    </script>
+    <style>
+        .content1{
+            width: 94%;
+            margin: 0 auto;
+        }
+        .el-upload-list--picture-card .el-upload-list__item-actions{
+                font-size: 0.8rem;
+        }
+        .el-upload-list--picture-card .el-upload-list__item{
+            width: 4rem;
+            height: 4rem;
+        }
+        .el-upload--picture-card{
+            width: 100%;
+            height: 6rem;
+            line-height: 6rem;
+
+        }
+        .el-upload-list--picture-card .el-upload-list__item{
+            margin: 0.7rem 0.2rem 0.2rem 0.75rem;
+        }
+    </style>
+    </body>
+</html>

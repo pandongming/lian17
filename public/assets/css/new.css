@@ -1,0 +1,169 @@
+body{
+	background-color: #F9F9F9;
+}
+.body{
+	height: auto;
+	
+}
+.head{
+	padding: 4%;
+	height: 6.2rem;
+	text-align: center;
+	background: url(../img/banner.jpg) no-repeat center top 100%;
+	color: #fff;
+}
+.imgbox{
+	width: 2.6rem;
+	height: 2.6rem;
+	border-radius: 50px;
+	margin:0 auto;
+	float: left;
+	margin-top:1.4rem
+}
+.head_mid{
+	width: 65%;
+	float: left;
+	text-align: left;
+	margin-left: 3%;
+	margin-top:1.4rem
+}
+.imgbox2{
+	width: 3%;
+	float: right;
+	line-height: 6rem;
+}
+.ew_img{
+	display: inline-block;
+	width: 0.7rem;
+	height: 0.7rem;
+}
+.imgbox img, .imgbox2 img, .ew_img img{
+	width: 100%;
+}
+.imgbox img{
+	width: 100%;
+	border-radius: 50px
+}
+.head a{
+	color: #fff;
+}
+.head h1{
+	font-weight: 600;
+	font-size:1rem ;
+	padding-bottom: 3%;
+}
+.head  p{
+	font-size: 0.65rem;
+}
+.content{
+	height: auto;
+	padding: 3% 0 3% 0;
+	overflow: hidden;
+	zoom: 1;
+	background-color: #fff;
+}
+.content a{
+	color: #5C5C5C
+}
+.content  li{
+	padding: 1% 3% 1% 3%;
+	height: 1.9rem;
+	line-height: 1.9rem;
+	font-size: 0.65rem;
+	border-bottom: #F8F8F8 solid 2px;
+}
+.content  li:last-child{
+	border-bottom: 0;
+}
+.content  li a{
+	color: #545454;
+}
+.content  li .left_img{
+	width: 1rem;
+	float: left;
+	margin-right: 3%;
+}
+.content  li .left_img img, .content  .right_img img{
+	width: 100%;
+	vertical-align: middle;
+}
+.content  .right_img{
+	width: 0.3rem;
+	float: right;
+}
+/*注册*/
+.content3{
+	padding: 3%;
+	height: auto;
+	overflow: hidden;
+	zoom: 1;
+	background-color: #fff;
+}
+.content3 p{
+	line-height: 1.1rem;
+	font-size: 0.6rem;
+}
+.content3 p span{
+	color: #2873E7;
+	font-weight: 600;
+}
+.content3 .form{
+	height: auto;
+	overflow: hidden;
+	zoom: 1;
+	margin-top: 3%;
+	border-top: #F5F5F5 solid 2px;
+	padding: 3% 0 3% 0;
+}
+.content3 .form div{
+	/*height: 1.3rem;
+	line-height: 1.3rem;*/
+	font-size: 0.6rem;
+}
+.content3 .form div input{
+	width: 70%;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	border: 0;
+}
+ .content3 .form div .lab{
+	color: #999999;
+}
+.care{
+	color: #C7C7C7;
+	font-size: 0.5rem;
+	padding-top: 3%;
+}
+.zhuce{
+	display: block;
+	border-radius: 5px;
+	border: 0;
+	background-color: #2873E7;
+	color: #fff;
+	padding: 2% 5% 2% 5%;
+	margin: 3% auto;
+}
+.content3 .form div  input[type="radio"] + label::before {
+    content: "\a0"; /*不换行空格*/
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0.6rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    margin-right: .4em;
+    border-radius: 50%;
+    /*border: 1px solid #01cd78;*/
+    text-indent: .15em;
+    line-height: 1; 
+    background: url("../img/checke.png") no-repeat center top 68%;
+}
+.content3 .form div  input[type="radio"]:checked + label::before {
+  /*  background-color: #01cd78;*/
+ 	background: url("../img/checked.png") no-repeat center top 68%;
+    background-clip: content-box;
+   /* padding: .2em;*/
+}
+.content3 .form div input[type="radio"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}

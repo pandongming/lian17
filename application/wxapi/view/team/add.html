@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>thinkphp5整合多张图片上传添加</title>
+<!-- css样式开始 -->
+<style type="text/css">
+body{font-family:'微软雅黑';}
+.btn{
+-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px;border-radius:3px;background-color: #ff8400;color: #fff;display: inline-block;height: 28px;line-height: 28px;text-align: center;width: 72px;transition: background-color 0.2s linear 0s;border:none;cursor:pointer;margin:0 0 20px;}
+.demo{width:900px;margin:10px auto;}
+.btn:hover{background-color: #e95a00;text-decoration: none;color:#fff;}
+.ul_pics{margin-top:10px;margin-left:-35px;}
+.ul_pics li{float:left;width:160px;height:160px;border:1px solid #ddd;padding:2px;text-align: center;margin:0 5px 5px 0;list-style:none;}
+.ul_pics li .img{width: 150px;height: 140px;display: table-cell;vertical-align: middle;position:relative;}
+.ul_pics li img{max-width: 150px;max-height: 140px;vertical-align: middle;}
+.progress{position:relative;padding: 1px; border-radius:3px; margin:60px 0 0 0;}
+.bar {background-color: green; display:block; width:0%; height:20px; border-radius:3px; }
+.percent{position:absolute; height:20px; display:inline-block;top:3px; left:2%; color:#fff }
+.span_del{display:block;height:16px;width:16px;position:absolute;top:5px;right:5px;cursor:pointer;background:url(__plupload__/Image/close.png);display:none;}
+input,button,submit,textarea,option,textarea{font-family:'微软雅黑';}
+.baocun{cursor:pointer;}
+.clear{clear:both;}
+<!-- css样式结束 -->
+</style>
+</head>
+<body>
+<a href="{:url('upload/index')}">返回首页</a>
+<form action="{:url('upload/addsave')}" method="post">
+   <div class="demo">
+       <a class="btn" id="btn">上传图片</a> 最大500KB，支持jpg，gif，png格式。
+       <ul id="ul_pics" class="ul_pics clearfix"></ul>
+          <input type='hidden' name="multimage" id="multimage" />
+          <div class="clear"></div>
+      <div><input type="submit" value="提交" /></div>
+   </div>
+</form>
+
+<script type="text/javascript" src="__plupload__/Js/jquery.js"></script>
+<script type="text/javascript" src="__plupload__/Library/plupload/plupload.full.min.js"></script>
+<script type="text/javascript">
+      var uploader = new plupload.Uploader({
+          runtimes: 'html5,flash,silverlight,html4',
+          browse_button: 'btn',
+          url: "{:url('Upload/upload')}",
+          flash_swf_url: '__plupload__/Library/plupload/Moxie.swf',
+          silverlight_xap_url: '__plupload__/Library/plupload/Moxie.xap',
+          filters: {
+              max_file_size: '500kb',
+              mime_types: [
+                  {title: "files", extensions: "jpg,png,gif"}
+              ]
+          },
+          multi_selection: true,
+          init: {
+              FilesAdded: function(up, files) {
+                  if ($("#ul_pics").children("li").length > 30) {
+                      alert("您上传的图片太多了！");
+                      uploader.destroy();
+                  } else {
+                      var li = '';
+                      plupload.each(files, function(file) {
+                          li += "<li class='li_image' id='" + file['id'] + "'>" +
+                       "<div class='progress'><span class='bar'></span><span   class='percent'>0%</span></div></li>";
+                      });
+                      $("#ul_pics").append(li);
+                      uploader.start();
+                  }
+              },
+              UploadProgress: function(up, file) {
+                  var percent = file.percent;
+                  $("#" + file.id).find('.bar').css({"width": percent + "%"});
+                  $("#" + file.id).find(".percent").text(percent + "%");
+              },
+              FileUploaded: function(up, file, info) {
+                  var data = eval("(" + info.response + ")");
+                  console.log(data.pic);
+       $("#" + file.id).html("<div class='img'><img src='" + data.pic + "'/><span class='span_del'></span></div>");
+                  var old=$("#multimage").val();
+                  $("#multimage").val(old + data.pic+'###');
+              },
+              Error: function(up, err) {
+                  alert(err.message);
+              }
+          }
+      });
+      uploader.init();
+</script>
+<script type="text/javascript">
+$(function(){
+   $(".demo").on("mouseover",'.li_image',function(){
+      $(this).find(".span_del").show();
+   })
+   $(".demo").on("mouseout",'.li_image',function(){
+      $(this).find(".span_del").hide();
+   })
+   $("#ul_pics").on("click",'.span_del',function(){
+      var src=$(this).siblings('img').attr('src');
+      var multimage=$("#multimage").val();
+      var new_multimage=multimage.replace(src+'###', '');
+      $("#multimage").val(new_multimage);
+      $(this).parents('li.li_image').remove();
+   })
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+body{
+	background-color: #F9F9F9;
+}
+#Wrapper{
+	height: auto;
+	overflow: hidden;
+	zoom: 1;
+}
+#Wrapper h1{
+	font-size: 0.6rem;
+	font-weight: normal;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	color: #5F5F5F;
+	margin-left: 4%;
+	
+}
+.content1{
+	background:  #fff;
+}
+
+.updata_ul{
+	list-style: none;
+	text-align: center;
+	padding: 0;
+}
+
+.updata_li{
+	width:46%;
+    text-align: center;
+	display: inline-block;
+	font-size: 12px;
+	margin:8px 0px;
+	border: none;
+}
+
+.updata_li img{
+	width: 100%;
+}
+.updata_li span{
+	font-size: 0.6rem
+}
+.conter2{
+	width: 94%;
+	padding: 3%;
+	margin: 0 auto;
+	height: auto;
+	overflow: hidden;
+	zoom: 1;
+	background-color: #fff;
+}
+.conter2 li{
+	height: 1.8rem;
+	line-height: 1.8rem;
+	border-bottom: #F2F2F2 solid 1px;
+	color: #1B1B1B;
+	font-size: 0.65rem;
+}
+.conter2 li:last-child{
+	border-bottom: 0;
+}
+.conter2 li label{
+	width: 20%;
+	float: left;
+}
+.conter2 li span{
+	width:2%;
+	float: right;
+}
+.conter2 li span img{
+	width: 100%;
+	vertical-align: middle;
+}
+.conter2 li input{
+	float: right;
+}
+.conter2 li input, .cl{
+	width: 73%;
+	float: left;
+	border: 0;
+	text-align: right;
+	height: 1.8rem;
+	line-height: 1.8rem;
+	font-size: 0.6rem;
+}
+.conter2  .cl input{
+	float: right;
+}
+.updata_btn_two{
+	width: 90%;
+	background: #2974E7;
+	outline:none;
+	border:none;
+	width: 50%;
+	margin: 5% auto;
+    color: #fff;
+    height: 1.55rem;
+    line-height: 1.55rem;
+    border-radius: 15px;
+    font-size: 0.6rem;
+}
+.updata_btn_div_two{
+	text-align: center;
+	
+}

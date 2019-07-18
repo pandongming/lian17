@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<title>创建圈子</title>
+		<link rel="stylesheet" href="__CDN__/assets/css/common.css" type="text/css"/>
+		<link rel="stylesheet" href="__CDN__/assets/css/new_adds.css" type="text/css"/>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<style>
+		.layui-upload-file { display:none; }
+		.pic-more2 { width:100%;  margin: 10px 0px 0px 0px;}
+		.pic-more2 li { width:90px; float: left; margin-right: 5px;}
+		.pic-more2 li .layui-input { display: initial; }
+		.pic-more2 li a { position: absolute; top: 0; display: block; }
+		.pic-more2 li a i { font-size: 24px; background-color: #008800; }
+		#slide-pc-priview2 .item_img img{ width: 90px; height: 90px;}
+		#slide-pc-priview2 li{position: relative;}
+		#slide-pc-priview2 li .operate{ color: #000; display: none;}
+		#slide-pc-priview2 li .toleft2{ position: absolute;top: 40px; left: 1px; cursor:pointer;}
+		#slide-pc-priview2 li .toright2{ position: absolute;top: 40px; right: 1px;cursor:pointer;}
+		#slide-pc-priview2 li .close2{position: absolute;top: 5px; right: 5px;cursor:pointer;}
+		#slide-pc-priview2 li:hover .operate{ display: block;}
+		</style>
+
+
+	</head>
+	<body>
+		<div id="content">
+			<div class="head">
+				<div class="tximg"><img src="/{$data['avatar']}" /> </div>
+				<div class="head_right">
+					<h1>{$data['nickname']}</h1>
+					<p>我的圈子ID: {$data['id']}</p>
+				</div>
+			</div>
+			<div class="wrapper">
+				<form class="form-horizontal" method="POST" action="">
+					<div class="lis">
+						<label>圈子名称：</label>
+						<input type="text" name="name" id="name" placeholder="请输入圈子名称" />
+                        <input type="hidden" name="userId" value="{$data['id']}"/>
+					</div>
+					<div class="lis">
+						<label>圈子简介：</label>
+						<input type="text" name="description" id="description" placeholder="请输入圈子简介,限150文字" class="jj_inpu"/>
+					</div>
+					<div class="img_group">
+						<div class="dl_groups" id="upload-img-box">
+                            <div class="adds" id="slide-pc">
+								<span><img src="__CDN__/assets/img/adds.png" /></span>
+								<p>添加圈子图片 <br /> 最多三张</p>
+							</div>
+						</div>
+
+					</div>
+
+				</form>
+			</div>
+			<!-- <input type="submit" class="tijiao" value="完成"/> -->
+			<button class="tijiao" lay-submit>创建</button>
+		</div>
+
+		<script type="text/javascript" src="__CDN__/assets/js/mobilesp.js" ></script>
+		<script type="text/javascript" src="__CDN__/assets/layui/layui.js" ></script>
+		<script>
+		layui.use('upload', function(){
+         var $ = layui.jquery;
+         var upload = layui.upload;
+          var num = 0; //便于接收返回值
+        var img = []; //便于存储返回值
+         upload.render({
+             elem: '#slide-pc',
+             url: '/api/common/upload',
+             size: 500,//上传图片大小
+             exts: 'jpg|png|jpeg',//上传文件类型
+             multiple: true,//允许多图上传
+             number:3,//一次允许上传图片的数量
+             accept:'images',//只接受图片
+             auto:true,//自动上传
+             before: function(obj) {
+
+                 layer.msg('图片上传中...', {
+                        icon: 16,
+                        shade: 0.01,
+                        time: 0
+                    })
+             },
+             done: function(res) {
+                  if(img_num>2){
+                        layer.msg('最多上传3张图片！');
+                        return false;
+                  }
+                // layer.close(layer.msg(res.msg));//关闭上传提示窗口
+                $('#upload-img-box').prepend('<dl>'+'<dt>'+'<img class="img" src=__CDN__'+res.data.url+'>'+'</dt>'+'<span class="delet" onclick="deleteImg($(this))"><img src="__CDN__/assets/img/delet.png" /></span>'+'<input type="hidden" name="imgUrl" id="imgUrl" value="' + res.data.url + '" /></dl>');
+                 if(res.code == 1) {
+                     return layer.msg(res.msg);
+                }
+             }
+         });
+		});
+
+		//删除图片
+		function deleteImg(obj){
+       		obj.parent().remove();
+       		return layer.msg('删除成功');
+    	}
+
+    	$('.tijiao').click(function(event) {
+    		var name = $('#name').val();
+    		var description = $('#description').val();
+    		var imgUrl = $('#imgUrl').val();
+
+    		if(!name){
+    			layer.msg('请填写圈子名字');
+    			return false;
+    		}
+    		if(!description){
+    			layer.msg('请填写圈子介绍');
+    			return false;
+    		}
+    		if(!imgUrl){
+    			layer.msg('请上传图片');
+    			return false;
+    		}
+    		var formData = $('.form-horizontal').serializeArray();
+            var dataArr = {};
+            $.each(formData, function() {
+                if (dataArr[this.name]) {
+                    if (!dataArr[this.name].push) {
+                        dataArr[this.name] = [ dataArr[this.name] ];
+                    }
+                    dataArr[this.name].push(this.value || '');
+                } else {
+                    dataArr[this.name] = this.value || '';
+                }
+            });
+
+    		$.post('/wxapi/team/add',{formData:dataArr},function(res){
+                var result = JSON.parse(res)
+                console.log(result.info)
+                console.log(result.url)
+                console.log(result.status)
+                if(result.status == 200){
+                    layer.msg(result.info,{
+                        icon:1,
+                        time:2000,
+                        end:function(){
+                            location.href=result.url;
+                        }
+                    })
+
+                }
+    		})
+    	});
+		</script>
+
+
+
+
+
+	</body>
+</html>

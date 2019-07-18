@@ -1,0 +1,270 @@
+<?php
+namespace app\api\controller;
+use app\common\controller\Api;
+use think\Cache;
+use think\Controller;
+
+class Wx extends Api {
+	protected $noNeedLogin = ['*'];
+	protected $noNeedRight = ['*'];
+	// public $appid =config('appid');
+	// private $appsecret;
+	// private $access_token;
+
+	// public function __construct($appid, $appsecret, $access_token)
+	// {
+	//     $this->appid = $appid;
+	//     $this->appsecret = $appsecret;
+	//     $this->access_token = $access_token;
+	// }
+
+	/**
+	 * 微信Token验证
+	 * @return [type] [description]
+	 */
+	public function index() {
+		//或的singature 参数 nonce timestamp token
+		define("TOKEN", "2018OfferMaker06");
+		$token = TOKEN;
+
+		$nonce     = $_GET['nonce'];
+		$timestamp = $_GET['timestamp'];
+		$signature = $_GET['signature'];
+		$echostr   = $_GET['echostr'];
+
+		$array = array();
+		$array = array($timestamp, $nonce, $token);
+		sort($array);
+		$str = implode('', $array);
+		$str = sha1($str);
+		if ($str == $signature && $echostr) {
+			//第一次接入微信api 接口的时候
+			echo $echostr;
+			exit;
+		} else {
+			$this->reponseMsg();
+		}
+	}
+
+	private function checkSignature() {
+		define("TOKEN", "weixin");
+		$signature = $_GET["signature"];
+		$timestamp = $_GET["timestamp"];
+		$nonce     = $_GET["nonce"];
+
+		$token  = TOKEN;
+		$tmpArr = array($token, $timestamp, $nonce);
+		sort($tmpArr, SORT_STRING);
+		$tmpStr = implode($tmpArr);
+		$tmpStr = sha1($tmpStr);
+
+		if ($tmpStr == $signature) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	//CURL 请求
+	public function https_request($url, $data = null) {
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, $url);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+		if (!empty($data)) {
+			curl_setopt($curl, CURLOPT_POST, 1);
+			curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+		}
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		$output = curl_exec($curl);
+		curl_close($curl);
+		return $output;
+	}
+
+	//获取微信Token
+	public function getWxAccessToken() {
+		//$appid = config('appid');
+		$appid = 'wx14dbecb0e9923aec';
+		//$appsecret = config('appsecret');
+		$appsecret = '974aec19d40a10f31c2e9b116d8bf99d';
+		$curl      = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.$appid.'&secret='.$appsecret;
+		$res       = $this->https_request($curl);
+		$res       = json_decode($res);
+		//dump($res);
+		$access_token = $res->access_token;
+		return $access_token;
+		// Cache::set('access_token', $access_token, 7200);
+
+	}
+
+	public function reponseMsg() {
+		//1. 获取微信post过来的XML数据格式
+		// $postStr = $_GLOBALS['HTTP_ROW_POST_DATA'];
+		$postStr = file_get_contents("php://input");
+		if (!empty($postStr) && is_string($postStr)) {
+			//禁止引用外部xml实体
+			//libxml_disable_entity_loader(true);
+
+			//$postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+			$postArr = json_decode($postStr, true);
+			if (!empty($postArr['MsgType']) && $postArr['MsgType'] == 'text') {
+				//文本消息
+				$fromUsername = $postArr['FromUserName'];//发送者openid
+				$toUserName   = $postArr['ToUserName'];//小程序id
+				$textTpl      = array(
+					"ToUserName"   => $fromUsername,
+					"FromUserName" => $toUserName,
+					"CreateTime"   => time(),
+					"MsgType"      => "transfer_customer_service",
+				);
+				exit(json_encode($textTpl));
+			} elseif (!empty($postArr['MsgType']) && $postArr['MsgType'] == 'image') {
+				//图文消息
+				$fromUsername = $postArr['FromUserName'];//发送者openid
+				$toUserName   = $postArr['ToUserName'];//小程序id
+				$textTpl      = array(
+					"ToUserName"   => $fromUsername,
+					"FromUserName" => $toUserName,
+					"CreateTime"   => time(),
+					"MsgType"      => "transfer_customer_service",
+				);
+				exit(json_encode($textTpl));
+			} elseif ($postArr['MsgType'] == 'event' && $postArr['Event'] == 'user_enter_tempsession') {
+				//进入客服动作
+				$fromUsername = $postArr['FromUserName'];//发送者openid
+				$content      = '您好，有什么能帮助你?';
+				$data         = array(
+					"touser"  => $fromUsername,
+					"msgtype" => "text",
+					"text"    => array("content"    => $content),
+				);
+				$json = json_encode($data, JSON_UNESCAPED_UNICODE);//php5.4+
+
+				$access_token = $this->getWxAccessToken();
+				/*
+				 * POST发送https请求客服接口api
+				 */
+				$url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=".$access_token;
+				//以'json'格式发送post的https请求
+				$curl = curl_init();
+				curl_setopt($curl, CURLOPT_URL, $url);
+				curl_setopt($curl, CURLOPT_POST, 1);// 发送一个常规的Post请求
+				curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+				curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+				if (!empty($json)) {
+					curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
+				}
+				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+				//curl_setopt($curl, CURLOPT_HTTPHEADER, $headers );
+				$output = curl_exec($curl);
+				if (curl_errno($curl)) {
+					echo 'Errno'.curl_error($curl);//捕抓异常
+				}
+				curl_close($curl);
+				if ($output == 0) {
+					echo 'success';
+					exit;
+				}
+
+			} else {
+				exit('系统正在维护中...');
+			}
+		} else {
+			echo "";
+			exit;
+		}
+
+	}
+
+	//创建自定义菜单
+	public function create_menu() {
+		// "type":"view",
+		//     "name":"个人中心",
+		//     "url":"http://www.myriadintl.com/tp5/public/"
+
+		$this->getWxAccessToken();
+		$access_token = Cache::get('access_token');
+		echo $access_token;
+		$appid     = 'wx0c35cc8848113e96';
+		$appsecret = 'd56c7f1d8b72e287bdb23459fa2697ac';
+		$curl      = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.$access_token;
+		$auto_url  = urlencode("http://www.bdjianshen.com/weixin/oauth2.php");
+		$button    = array(
+			'button' => array(
+				[//第一个一级菜单
+					'name'       => urlencode('预约健身'),
+					'sub_button' => array(
+						[
+							'name' => urlencode('附近场馆'),
+							'type' => 'view',
+							'url'  => 'http://www.bdjianshen.com/weixin/cesi2.php',
+						],
+						[
+							'name' => urlencode('我的健身'),
+							'type' => 'view',
+							'url'  => 'http://www.bdjianshen.com/public/index.php/api/Userinfo/selectuserinfo',
+						],
+					),
+				],
+				//第二个一级菜单
+				[
+					'name'       => urlencode('关于BD'),
+					'sub_button' => array(
+						[
+							'name' => urlencode('最新资讯'),
+							'type' => 'view',
+							'url'  => 'https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzUzMzQzMDM5Nw==&scene=124#wechat_redirect',
+						],
+						[
+							'name' => urlencode('投诉建议'),
+							'type' => 'view',
+							'url'  => 'http://www.bdjianshen.com/public/index.php/api/advice/index',
+						],
+						[
+							'name' => urlencode('商家登录 '),
+							'type' => 'view',
+							'url'  => 'http://www.bdjianshen.com/public/index.php/seller/Login',
+						],
+						[
+							'name' => urlencode('关于我们'),
+							'type' => 'view',
+							'url'  => 'http://www.bdjianshen.com/public/index.php/api/about/about',
+						],
+
+					),
+				], //
+
+			),
+		);
+		$postArr = urldecode(json_encode($button));
+		echo $access_token;
+		echo '<hr>';
+		echo $postArr;
+		$res = $this->https_request($curl, $postArr);
+		dump($res);
+
+	}
+	public function test_access_token() {
+		$appid        = 'wx083063399f39f1b3';
+		$appsecret    = '0ee5a420532c634522ccdffdf7e6d258';
+		$url          = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$appid."&secret=".$appsecret;
+		$res          = $this->https_request($url);
+		$res          = json_decode($res);
+		$access_token = $res->access_token;
+		return $access_token;
+
+	}
+
+	//获取关注微信公众号用户列表组
+	public function get_user_group() {
+		$url = "https://api.weixin.qq.com/cgi-bin/user/get?access_token=".$this->test_access_token();
+
+		$res = $this->https_request($url);
+		$res = json_decode($res, true);
+		dump($res);
+	}
+
+	public function get_user_info() {
+		$url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=".$this->test_access_token()."&openid=OPENID&lang=zh_CN";
+	}
+
+}

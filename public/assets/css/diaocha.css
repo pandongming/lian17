@@ -1,0 +1,50 @@
+body{
+	background-color: #F9F9F9;
+}
+#Wrapper{
+	width: 100%;
+}
+#Wrapper h1{
+	text-align: left;
+	padding-left: 3%;
+	color: #CFCFCF;
+	height: 1.6rem;
+	line-height: 1.6rem;
+	font-size: 0.65rem;
+	font-weight: normal;
+}
+.conter{
+	width: 94%;
+	padding: 3%;
+	margin: 0 auto;
+	height: auto;
+	overflow: hidden;
+	zoom: 1;
+	background-color: #fff;
+}
+.conter li{
+	height: 1.8rem;
+	line-height: 1.8rem;
+	border-bottom: #F2F2F2 solid 1px;
+}
+.conter li:last-child{
+	border-bottom: 0;
+}
+.conter li a{
+	width: 100%;
+	display: block;
+	color: #1B1B1B;
+	font-size: 0.65rem;
+}
+.conter li label{
+	float: left;
+}
+.conter li span{
+	width:2%;
+	float: right;
+}
+.conter li span img{
+	width: 100%;
+	vertical-align: middle;
+}
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<title>我的个人信息</title>
+		<link rel="stylesheet" href="__CDN__/assets/css/common.css" type="text/css"/>
+		<link rel="stylesheet" href="__CDN__/assets/css/person.css" type="text/css"/>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="__CDN__/assets/js/mobilesp.js" ></script>
+		<script type="text/javascript" src="__CDN__/assets/js/jquery.jeditable.js" ></script>
+	</head>
+	<body>
+		<div class="body">
+			<ul class="form">
+					<li>
+						<label>昵称：</label>
+						<div class="cont1">{$data.nickname}</div>
+						<div class="smallimg"><img src="__CDN__/assets/img/jt.png" /></div>
+					</li>
+					<li>
+						<label>姓名：</label>
+						<div class="cont1">{$data.user_name}</div>
+						<div class="smallimg"><img src="__CDN__/assets/img/jt.png" /></div>
+					</li>
+					<li>
+						<label>手机号：</label>
+						<div class="cont1">{$data.moblie}</div>
+						<div class="smallimg"><img src="__CDN__/assets/img/jt.png" /></div>
+					</li>
+					<li>
+						<label>邮箱：</label>
+						<div class="cont1">{$data.email}</div>
+						<div class="smallimg"><img src="__CDN__/assets/img/jt.png" /></div>
+					</li>
+					<li>
+						<label>公司：</label>
+						<div class="cont1">{$data.company_name}</div>
+						<div class="smallimg"><img src="__CDN__/assets/img/jt.png" /></div>
+					</li>
+			<!-- 	<a href="javascript:;" class="block">
+					<li>
+						<label>二维码：</label>
+						<div class="cont1">
+							<span class="smallimg2"><img src="__CDN__/static/qrcode/{$data.id}/{$data.id}.png" /> </span>
+						</div>
+						<div class="smallimg"><img src="__CDN__/assets/img/jt.png" /></div>
+					</li>
+				</a> -->
+				<a href="{:url('Wxcuser/myInfo')}">
+					<li>
+						<label>邀请工具：</label>
+						<div class="cont1">
+							<span class="smallimg2"><img src="__CDN__/assets/img/ljimg.png" /> </span>
+						</div>
+						<div class="smallimg"><img src="__CDN__/assets/img/jt.png" /></div>
+
+					</li>
+				</a>
+					<li>
+						<label>抵用系数：</label>
+						<div class="cont1">{$data.userFee}</div>
+						<div class="smallimg"><img src="__CDN__/assets/img/jt.png" /></div>
+					</li>
+			</ul>
+		</div>
+		<!--隐藏的二维码-->
+		<div class="model"></div>
+		<div class="hide">
+			<span><img src="__CDN__/assets/img/ewm.jpg" /></span>
+		</div>
+		<script type="text/javascript">
+			$(function(){
+				$(".hide").hide();
+				$(".model").hide();
+				$(".block").click(function(){
+					$(".hide").show();
+					$(".model").show();
+				})
+				$(".hide").click(function(){
+					$(".hide").hide();
+					$(".model").hide();
+				})
+			})
+		</script>
+<!-- 		<script language="javascript">
+            $(document).ready(function() {
+                $(".cont1").editable(function(input, settings, elem) {
+                    console.info("Changed Value: ", input)
+                    // WARNING: $(elm).data 必须调用, 否则元素只能编辑一次
+                    console.info($(elem).data('_'));
+                    $(this).html(input);
+                }, {
+                    // submit: 'OK', // 设置后会显示确认按钮
+                    // cancel: "Cancel", // 设置后会显示取消按钮
+                    event: "dblclick", // 默认为 click, 这里修改为双击进入编辑模式
+                    cssclass: "bs-example bs-example-form", // css class name, 编辑模式会生成 form, 这里使用的 bootstrap 的一个表单样式
+                    select: false, // 是否默认全选
+                    onblur: "submit", // 鼠标失去光标的操作. submit 保留更改. cancel 会取消标记. 默认为 calcel.
+                    type: "textarea", // input 类型
+                    style: 'color: blue' // 设置样式, 会覆盖 cssclass 中的设置
+                });
+            });
+        </script> -->
+
+	</body>
+</html>

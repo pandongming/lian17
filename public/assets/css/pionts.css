@@ -1,0 +1,70 @@
+body{
+	background-color: #F2F2F2;
+}
+.body{
+	height: auto;
+	min-height: 27rem;
+	overflow: hidden;
+	zoom: 1;
+	background: url(../img/bg_jf.png) no-repeat center top;
+	background-size: 100%;
+}
+.hader{
+	text-align: center;
+	padding-top: 10%;
+	height: auto;
+	overflow: auto;
+	zoom: 1;
+}
+.hader p{
+	font-size: 0.75rem;
+	color: #fff;
+	font-weight: 600;
+	font-style: italic;
+}
+.hader h1{
+	font-size: 1.3rem;
+	color: #fff;
+	font-style: italic;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+.Wrapb{
+	width: 84%;
+	padding: 3%;
+	margin:  0 auto;
+	margin-top: 5%;
+	background-color: #fff;
+	border-radius: 5px;
+	height: auto;
+	overflow: hidden;
+	zoom: 1;
+}
+.Wrapb a, .Wrapb dl{
+	color: #999999;
+}
+.Wrapb dl{
+	width: 49%;
+	padding: 4% 0 4% 0;
+	float: left;	
+	border-bottom: #F1F1F1 solid 1px;
+}
+.Wrapb dl.frist{
+	border-right:#F1F1F1 solid 1px ;
+}
+.Wrapb dl dt{
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+	height: auto;
+	min-height: 2.8rem;
+}
+.Wrapb dl dt img{
+	width: 100%;
+}
+.Wrapb dl dd{
+	text-align: center;
+	font-size: 0.65rem;
+	height: 1.4rem;
+	line-height: 1.4rem;
+}

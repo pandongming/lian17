@@ -1,0 +1,13 @@
+!<!DOCTYPE html>
+<html>
+<head>
+    <title>生成二维码</title>
+</head>
+<body>
+<div>
+  <img src="/static/qrcode/{$user}/{$user}.png">
+ <a href="{:url('wxapi/Index/makeQrcode')}" class="js-ajax-dialog-btn" data-msg="确定生成吗？">点击生成</a>
+
+</div>
+</body>
+</html>

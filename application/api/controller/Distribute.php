@@ -1,0 +1,84 @@
+<?php
+
+namespace app\api\controller;
+
+use app\common\controller\Api;
+
+/**
+ * 首页接口
+ */
+class Distribute extends Api
+{
+    protected $noNeedLogin = ['*'];
+    protected $noNeedRight = ['*'];
+
+    /**
+     * 首页
+     *
+     */
+    public function index()
+    {
+        $arr = ['id'=>1,'name'=>'aaa'];
+        $a=cmf_get_current_user();
+        dump($a);
+        die;
+
+        $distribute = new Distribute();
+        $data       = $distribute->level_one(); //在模型里具体实现数据库操作
+
+        $user       = cmf_get_current_user(); //获取前台当前登录用户信息，如果没有登，就返回空
+        $this->assign($user);
+        //cmf自带的模板分页渲染方法，将获取分类好数组传给前端去处理
+        /* 儿级 */
+        $this->assign("page", $data['page']); //当前页码
+        $this->assign("lists", $data['lists']); //所有的数据及分类
+        /* 孙级 */
+        $this->assign("page2", $data['page2']);
+        $this->assign("lists2", $data['lists2']);
+        /* 曾孙级 */
+        $this->assign("page3", $data['page3']);
+        $this->assign("lists3", $data['lists3']);
+        return $this->fetch('index');
+    }
+    /**
+     *   @Notes:查询下一级的成员
+     */
+    public function next()
+    {
+        $distribute = new DistributeModel();
+        //获取前端传来的参数，这是当前儿子成员，当儿子成为父级，那它的儿子自然是之前父级成员的孙子，也就是下一级了
+        $distribute = new DistributeModel();
+        $id         = $this->request->param("id", 0, "intval");
+        $data       = $distribute->next_distribute($id);
+        $user       = cmf_get_current_user();
+        $this->assign($user);
+        /* 一级 */
+        $this->assign("page", $data['page']);
+        $this->assign("lists", $data['lists']);
+        /* 二级 */
+        $this->assign("page2", $data['page2']);
+        $this->assign("lists2", $data['lists2']);
+        /* 三级 */
+        $this->assign("page3", $data['page3']);
+        $this->assign("lists3", $data['lists3']);
+        return $this->fetch('index');
+    }
+
+    /**
+     *   @Notes:取消层级关系
+     */
+    public function negate()
+    {
+        $data       = $this->request->param();
+        $distribute = new DistributeModel();
+        //看看获取到的参数是几号，毕竟如果父亲拒绝儿子的供养，不代表爷爷也愿意，所以更新下表字段就行，将父级id改成0就行了。
+        $ret = $distribute->negate_distinct($data['id'], $data['negate_obj']); //$data['negate_obj']:1父级；2祖级；3太级；
+        if ($ret) {
+            $this->success("取消关系成功！你再也获取不到他的分成了！");
+        } else {
+            $this->error("取消失败了！");
+        }
+
+    }
+
+}

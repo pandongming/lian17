@@ -1,0 +1,192 @@
+.head{
+	padding: 4%;
+	height: 7.2rem;
+	text-align: center;
+	background: url(../img/banner.jpg) no-repeat center top 100%;
+	color: #fff;
+}
+.imgbox{
+	width: 2.6rem;
+	height: 2.6rem;
+	border-radius: 50px;
+	margin:0 auto;
+	float: left;
+	margin-top: 1.4rem;
+}
+.head_mid{
+	width: 65%;
+	float: left;
+	text-align: left;
+	margin-left: 3%;
+	margin-top: 1.4rem;
+}
+.imgbox2{
+	width: 3%;
+	float: right;
+	line-height: 6rem;
+}
+.ew_img{
+	display: inline-block;
+	width: 0.6rem;
+	height: 0.6rem;
+}
+.imgbox img, .imgbox2 img, .ew_img img{
+	width: 100%;
+}
+.head a{
+	color: #fff;
+}
+.head h1{
+	font-weight: 600;
+	font-size:1rem ;
+	padding-bottom: 3%;
+}
+.head  p{
+    font-size: 0.65rem;
+}
+.jf{
+    text-align:left;
+    padding-left: 4%;
+    color: #fff;
+    font-size: 0.65rem;
+    margin-top: 2%
+}
+.jf span{
+    font-size: 0.7rem;
+    font-weight: 600
+}
+.h_box{
+    height:4.5rem;
+    overflow: hidden;
+    zoom: 1;
+}
+.list_box{
+    height: auto;
+    overflow: hidden;
+    zoom: 1;
+}
+.list_box ul li{
+    padding: 3% 2% 3% 2%;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 0.65rem;
+    color: #636363;
+    border-bottom: #E3E3E3 solid 1px;
+}
+.list_box ul li span{
+    float: left;
+}
+.list_box ul li .les{
+    float:right;
+}
+.list_box ul li .les span.les_img{
+    width: 0.6rem;
+    height: 0.6rem;
+    float: right;
+}
+.list_box ul li .les span.les_img img{
+    width: 100%
+}
+.list_box ul li .les .jian{
+    color: #E80808;
+    font-weight: 600
+}
+.list_box ul li .les .jia{
+    color: #08D174;
+    font-weight: 600
+}
+.status{
+    text-align: center;
+    font-size: 0.6rem;
+    color: white;
+    background-color: darkgrey;
+    display: none;
+    padding-top: 3%;
+}
+/* 下拉样式 */
+html,body{
+    width:100%;
+    height:100%;
+    }
+    
+    body,ul,li{
+    padding:0;
+    margin:0;
+    border:0;
+    }
+    
+    body{
+    font-size:12px;
+    -webkit-user-select:none;
+    -webkit-text-size-adjust:none;
+    font-family:helvetica;
+    }
+    
+    #scroller{
+    position:relative;
+    /* -webkit-touch-callout:none;*/
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    float:left;
+    width:100%;
+    padding:0;
+    }
+    
+    #scroller ul{
+    position:relative;
+    list-style:none;
+    padding:0;
+    margin:0;
+    width:100%;
+    text-align:left;
+    }
+    
+    #scroller li{
+    padding:0 10px;
+    height:40px;
+    line-height:40px;
+    border-bottom:1px solid#ccc;
+    border-top:1px solid#fff;
+    background-color: #fff;
+    font-size:14px;
+    }
+    
+    #scroller li>a{
+    display:block;
+    }
+#pullUp{
+        display: none;
+    }
+#pullDown,#pullUp {
+    background: #fff;
+    height: 1.3rem;
+    line-height: 1.3rem;
+    padding: 3%;
+    border-bottom: 1px solid#ccc;
+    font-weight: bold;
+    font-size: 0.5rem;
+    color: #888;
+    text-align: center
+}
+
+#pullDown.pullDownIcon {
+    -webkit-transform: rotate(0deg)translateZ(0);
+}
+#pullUp.pullUpIcon {
+    -webkit-transform: rotate(-180deg)translateZ(0);
+}
+/* css3动画样式 */
+#pullDown.flip.pullDownIcon{
+-webkit-transform:rotate(-180deg)translateZ(0);
+}
+
+#pullUp.flip.pullUpIcon{
+-webkit-transform:rotate(0deg)translateZ(0);
+}
+
+
+
+@-webkit-keyframesloading{
+from{-webkit-transform:rotate(0deg)translateZ(0); }
+to{-webkit-transform:rotate(360deg)translateZ(0); }
+}
+

@@ -1,0 +1,47 @@
+	body{
+	margin: 0;
+	padding: 0;	
+	background: #f9f9f9;
+}
+.apply_layout{
+	width: 95%;
+	margin: 0 auto;
+	background: #ffffff;
+	margin-top: 0.4rem;
+}
+.apply_div{
+	text-align: center;
+}
+.apply_p2{
+	border-top: 1px solid #f8f8f8;
+	font-size: 0.6rem;
+	padding: 0.5rem;
+	color: #696969;
+}
+.apply_div2{
+     padding-top: 1rem;
+}
+.apply_p{
+	margin:0.5rem ;
+	font-size: 1.5rem;
+}
+.apply_span{
+	font-size: 0.7rem;
+	font-weight: bold;
+}
+		.apply_btn_div{
+		text-align: center;
+			
+		}
+		.apply_btn{
+			width: 85%;
+			background: #2974E7;
+			outline:none;
+			border:none;
+			margin: 5% auto;
+		    color: #fff;
+		    height: 1.55rem;
+		    line-height: 1.55rem;
+		    border-radius: 15px;
+		    font-size: 0.6rem;
+		}

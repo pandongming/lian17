@@ -1,0 +1,34 @@
+body{
+	padding: 0;
+	margin: 0;
+	
+}
+.notice_layout{
+	width: 100%;
+	margin: 0 auto;
+	background: #fff;
+}
+.notice_div{
+	padding: 0.5rem;
+	clear: both;
+}
+
+.row{
+	width: 100%;
+	
+}
+.notice_p1{
+	font-size: 0.7rem;
+	margin-top: 0.1rem ;
+}
+.notice_p2{
+	
+	padding: 0;
+	font-size: 0.3rem;
+    overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	color: #bcbcbc;
+	margin-bottom: 0;
+}
+

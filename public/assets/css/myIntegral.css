@@ -1,0 +1,81 @@
+body{
+	padding: 0;
+	margin: 0;
+	background: #f9f9f9
+}
+.myIntegral{
+	width: 100%;
+	margin: 0 auto;
+}
+.my_ntegral_div2{
+	background-image: url(../img/my_integral_img_01.jpg);
+	background-repeat: no-repeat;
+	min-height: 8rem;
+	height: auto;
+	width: 100%;
+	background-size:100% ;
+}
+.my_Integral_ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	top: 2.2rem;
+}
+.my_Integral_li{
+	font-size: 1.3rem;color: #fff;letter-spacing: 0.1rem;font-weight: bold;
+	line-height: 2.2rem;
+}
+.my_Integral_li2{
+	font-size: 0.6rem;
+    color: #fff;
+    
+}
+.my_Integral_li3{
+	font-size: 0.6rem;
+    color: #fff;
+    
+}
+.my_Integral_img{
+	top: 2.5rem;
+    min-width: 5rem;
+}
+.my_Integral_div3{
+	display: inline-block;
+	width: 48%;
+	padding: 0.3rem;
+}
+.my_Integral_div4{
+    text-align: center;
+}
+.my_Integral_div_data_01{
+	border-bottom:2px solid #2974e7  ;
+}
+.my_Integral_ul_01{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.my_Integral_div_style{
+	width: 95%;
+	margin: 0 auto;
+}
+.my_Integral_div_01{
+	width: 96%;
+	margin: 0 auto;
+}
+.my_Integral_btn_div{
+text-align: center;
+	
+}
+.my_Integral_btn{
+	width: 90%;
+	background: #2974E7;
+	outline:none;
+	border:none;
+	margin: 5% auto;
+    color: #fff;
+    height: 1.55rem;
+    line-height: 1.55rem;
+    border-radius: 15px;
+    font-size: 0.6rem;
+}

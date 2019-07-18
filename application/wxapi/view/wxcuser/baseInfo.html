@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<meta http-equiv="Pragma" CONTENT="no-cache">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+		<meta http-equiv="Expires" CONTENT="0">
+		<title>我的</title>
+		<link rel="stylesheet" href="__CDN__/assets/css/common.css" type="text/css"/>
+		<link rel="stylesheet" href="__CDN__/assets/css/new.css" type="text/css" />
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="__CDN__/assets/js/mobilesp.js" ></script>
+	</head>
+	<body>
+		<div class="body">
+			<div class="head">
+				<a href="{:url('Wxcuser/userInfo')}">
+					<div class="imgbox"><img src="__CDN__/{$data['avatar']}" /> </div>
+					<div class="head_mid">
+						<h1>{$data['nickname']}</h1>
+						<p>圈子ID:<span>{$data['id']}</span>
+							<span class="ew_img"><img src="__CDN__/assets/img/opcityimg.png" /> </span></p>
+					</div>
+					<div class="imgbox2"><img src="__CDN__/assets/img/jt2.png" /> </div>
+				</a>
+			</div>
+			<div class="content">
+				<a href="{:url('Wxcuser/building')}">
+					<li>
+						<div class="left_img">
+							<img src="__CDN__/assets/img/pic01.png" />
+						</div>
+						可抵用金额
+						<div class="right_img">
+							<img src="__CDN__/assets/img/jt.png" />
+						</div>
+					</li>
+				</a>
+				<a href="{:url('WxcuserScoreLog/index')}">
+					<li>
+							<div class="left_img">
+								<img src="__CDN__/assets/img/pic03.png" />
+							</div>
+							我的积分
+							<div class="right_img">
+								<img src="__CDN__/assets/img/jt.png" />
+							</div>
+					</li>
+				</a>
+				<a href="{:url('Wxcuser/building')}">
+					<li>
+							<div class="left_img">
+								<img src="__CDN__/assets/img/pic04.png" />
+							</div>
+							通知
+							<div class="right_img">
+								<img src="__CDN__/assets/img/jt.png" />
+							</div>
+					</li>
+				</a>
+				<a href="{:url('Wxcuser/myInfo')}">
+					<li>
+						<div class="left_img">
+							<img src="__CDN__/assets/img/pic02.png" />
+						</div>
+						我的圈子
+						<div class="right_img">
+							<img src="__CDN__/assets/img/jt.png" />
+						</div>
+					</li>
+				</a>
+			</div>
+		</div>
+		<script language="javascript">
+        //防止页面后退
+        // session.removeAttribute("userId");
+        // session.getAttribute('userId');
+        history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+    </script>
+	</body>
+</html>

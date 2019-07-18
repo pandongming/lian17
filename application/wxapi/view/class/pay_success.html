@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>OM课堂-大三快三步</title>
+    <script src="__STATIC__/class/js/fontSize.js"></script>
+    <link rel="stylesheet" href="__STATIC__/class/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__STATIC__/class/css/style.css">
+<!--     <style>
+        @font-face {
+            font-family: simsun;
+            src: url('font/simsun.ttc');
+        }
+        @font-face {
+            font-family: NotoSerifCJKsc-Bold;
+            src: url('font/NotoSerifCJKsc-Bold.otf');
+        }
+    </style> -->
+</head>
+<body>
+<div class="wrapper">
+    <div class="success">
+        <div class="scan">
+            <p>扫码添加OM老秘微信</p>
+            <p>老秘会在开课前拉同学们进群</p>
+        </div>
+        <div class="codeImg">
+            <img src="__STATIC__/class/images/code.jpg">
+            <p>OM老秘</p>
+        </div>
+        <div class="pay_s">
+            <span>支付成功</span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+// 阻止重复提交支付, 点击内置返回按钮,返回到首页
+pushHistory();
+    function pushHistory() {
+        var state = {
+            title: "OM文书课堂",
+            url: "{:url('Index/index')}"    };
+        window.history.pushState(state, "OM文书课堂", "{:url('Index/index')}");
+    };
+    window.onpopstate = function() {
+        location.href="{:url('Index/index')}";
+    };
+</script>
+</body>
+</html>

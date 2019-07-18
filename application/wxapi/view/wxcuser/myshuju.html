@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+        <title>邀请</title>
+        <link rel="stylesheet" href="__CDN__/assets/css/common.css" type="text/css" />
+        <link rel="stylesheet" href="__CDN__/assets/css/new_yaoqing.css" type="text/css" />
+        <link rel="stylesheet" href="__CDN__/assets/css/swiper.min.css" type="text/css" />
+        <style>
+            .wrap h2 a{
+                display: inline-block;
+                width: 0.9rem;
+                height: 0.5rem;
+                color: #323232;
+                margin-left: 3%
+            }
+            .wrap h2 a img{
+                width: 100%;
+                vertical-align: middle
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+             <script type="text/javascript">
+        $(function(){
+            var status = "{$status}";
+            if (status==1) {
+                $(".erw_box").css('display','block');
+                $(".shengc").css('display','none');
+            } else {
+                $(".shengc").css('display','block');
+                $(".shengc").click(function(){
+                    $.get('/wxapi/Wxcuser/makeQrcode',function(res){
+                        var data = JSON.parse(res);
+                        alert(data.info)
+                        $(".erw_box").css('display','block');
+
+                        window.location.replace("{:url('Wxcuser/myInfo')}");;
+                    })
+
+                })
+            }
+
+
+
+        })
+    </script>
+    </head>
+    <body>
+        <div id="content">
+            <div class="head">
+                <h1>{$dataArr['nickname']}</h1>
+                <p>我的圈子ID:{$dataArr['id']}</p>
+                <div class="wrap">
+                    <div class="img_box"><img src="{$teamData['imgUrl'][0]}" /></div>
+                    <h2>{$teamData['name']}<a href="{:url('Team/updates',['id'=>$teamData['id']])}"> <img src="__CDN__/assets/img/edit.png"/> </a></h2>
+                    
+                    <p>
+                        <sapn>{$countData}</sapn>个成员 &nbsp; 圈主<span>{$dataArr['nickname']}</span> 创建<span></span>
+                    </p>
+                </div>
+            </div>
+            <div class="wrap2">
+                <h3>圈子介绍</h3>
+                <article>
+                   {$teamData['description']}
+                </article>
+            </div>
+            <div class="wrap3">
+                <div class="wrap3_box swiper-container">
+                    <ul  class="swiper-wrapper">
+                        {volist name="$teamData['imgUrl']" id='vo' key="k"}
+                        <li  class="swiper-slide">
+                            <img src="{$vo}" class="img-responsive" />
+                        </li>
+                        {/volist}
+
+                    </ul>
+                </div>
+            </div>
+            <div class="wrap4">
+                <h2>圈子成员 (共<span>{$countData}</span>人 )</h2>
+                <div class="boxs">
+                    <ul class="pinfo2">
+                        {volist name='data' id='vo'}
+                        <li>
+                            <!-- <span class="number">{index}</span> -->
+                            <div class="imgs"><img src="/{$vo['avatar']}" /> </div>
+                            <span class="name">{$vo['nickname']}</span>
+                            <span class="idname">ID: {$vo['id']}</span>
+                        </li>
+                        {/volist}
+
+                    </ul>
+                    <div class="lookall2">查看全部 <span><img src="__CDN__/assets/img/jiantou.png" class="img-responsive" /> </span> </div>
+                </div>
+            </div>
+            <div class="wrap5">
+                <h2>我的邀请方式</h2>
+                <div class="boxs2">
+                    <ul class="pinfo">
+                        <li style="word-wrap:break-word">1.链接：<span>wx.lian17.com/wxapi/wxcuser/regUser.html?invite_key={$dataArr['invited_code']}<input type="button" id="text" value="复制" class="fuzhi" /> </span></li>
+                        <li>2.二维码 <p class="shengc" >点击生成二维码</p></li>
+                        <div class="erw_box">
+                            <img src="/static/qrcode/{$dataArr['id']}/{$dataArr['id']}.png"/>
+                        </div>
+                    </ul>
+                    <!-- <div class="lookall">查看全部 <span><img src="__CDN__/assets/img/jiantou.png" class="img-responsive" /> </span> </div> -->
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+        <script type="text/javascript" src="__CDN__/assets/js/mobilesp.js"></script>
+        <script type="text/javascript" src="__CDN__/assets/js/new_index.js"></script><!--首页部分js-->
+        <script type="text/javascript" src="__CDN__/assets/js/swiper.min.js"></script><!--图片滚动组件-->
+
+         <script>
+            var swiper = new Swiper('.swiper-container', {
+              slidesPerView: 3,
+              spaceBetween: 30,
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+            });
+          </script>
+
+        <script type="text/javascript">
+        var clipboard = new ClipboardJS('.fuzhi',{
+                text: function() {
+                    var copyA = $("#text").parent().text();
+                    return copyA;
+                }
+            });
+
+            clipboard.on('success', function(e) {
+                alert('复制成功');
+
+            });
+            clipboard.on('error', function(e) {
+                alert('复制失败');
+            });
+
+
+
+
+        </script>
+    </body>
+</html>

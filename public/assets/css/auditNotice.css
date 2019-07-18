@@ -1,0 +1,47 @@
+body{
+	padding: 0;
+	margin: 0;
+	background: #f9f9f9;
+}
+.audit_Notice{
+	width: 94%;
+	margin: 0 auto;
+	
+	
+}
+
+.audit_Notice_style {
+	display: inline-block;
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 0.5rem;
+	background:#71cf5b ;
+}
+.audit_Notice_p{
+	display: inline;
+	font-size: 0.7rem;
+	margin-left: 0.3rem;
+	
+}
+.audit_Notice_div{
+	margin-top: 0.8rem;
+	margin-left: 0.8rem;
+	margin-right: 0.8rem;
+	margin-bottom: 0.3rem;
+}
+.audit_Notice_span{
+	font-size: 0.6rem;
+    margin-top: 0.4rem;
+    float: right;
+    color: #a0a0a0;
+}
+.audit_Notice2{
+	border-bottom: 1px  solid #e6e6e6;
+}
+.audit_Notice_div2{
+	width: 89%; 
+    font-size: 0.6rem;
+    margin: 0 auto;
+    line-height: 1.2rem;
+    padding: 0.5rem;
+}

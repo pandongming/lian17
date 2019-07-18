@@ -1,0 +1,50 @@
+#Wrapper{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	zoom: 1;
+}
+#Wrapper header{
+	height:8.5rem;
+	overflow: hidden;
+	zoom: 1;
+	position: relative;
+}
+#Wrapper header img{
+	width: 100%;
+}
+.mui-table-view .time{
+	display: block;
+	color: #9D9D9D;
+	font-size: 0.5rem;
+}
+.mui-table-view p {
+	width: 100%;
+	font-size: 0.65rem;
+	color: #363636;
+	height: auto;
+	overflow: hidden;
+	zoom: 1;
+}
+.mui-table-view p b{
+	font-weight: normal;
+}
+.mui-table-view .sjf{
+	width: 20%;
+	float: left;
+	text-align: right;
+	color: #3278E8;
+}
+.mui-table-view .sname{
+	width: 70%;
+	float: left;
+}
+.mui-table-view .imgb{
+	width: 4%;
+	float: right;
+	margin-right:3%;
+}
+.mui-table-view .imgb img{
+	width: 100%;
+}
+

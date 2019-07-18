@@ -1,0 +1,94 @@
+<?php
+
+namespace app\index\controller;
+
+use app\common\controller\Frontend;
+
+class Index extends Frontend {
+	protected $noNeedLogin = '*';
+	protected $noNeedRight = '*';
+	protected $layout      = '';
+
+	public function index() {
+
+		$url = 'http://www.baidu.com/index.php?m=content&c=index&a=lists&catid=6&area=0&author=0&h=0庐ion=0&s=1&page=1';
+		$url = "https://wx.lian17.com/index/index.html?invite_key=2";
+		$arr = parse_url($url);
+		var_dump($arr);
+		$arr_query = convertUrlQuery($arr['query']);
+		dump($arr_query);
+		dump($arr_query['invite_key']);
+		dump(getUrlQuery($arr_query));
+
+	}
+
+	public function add() {
+		$res = $this->createCode(20);
+		return $res;
+	}
+	public function createCode2($user_id) {
+		$str  = "E5FCDG3HQA4B1NOPIJ2RSTUV67MWX89KLYZ";
+		$num  = $user_id;
+		$code = '';
+		while ($num > 0) {
+			$mod  = $num%35;
+			$num  = ($num-$mod)/35;
+			$code = $str[$mod].$code;
+		}
+		if (empty($code[4])) {
+			$code = str_pad($code, 5, '0', STR_PAD_LEFT);
+			return $code;
+		}
+
+	}
+	/**
+	 * @description: 10进制转36进制
+	 * @param {type}
+	 * @return:
+	 */
+	protected function createCode($userId) {
+		$sourceString = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+		$num  = $userId;
+		$code = '';
+		while ($num) {
+			$mod  = bcmod($num, 36);
+			$num  = bcdiv($num, 36);
+			$code = "{$sourceString[$mod]}{$code}";//邀请码拼接
+		}
+		//判断code的长度
+		if (empty($code[4])) {
+			$code = str_pad($code, 6, '0', STR_PAD_LEFT);
+		}
+		//长度不够拼接'0'
+
+		return $code;
+	}
+
+	/**
+	 * @param $query
+	 * @return array
+	 */
+	public function convertUrlQuery($query) {
+		$queryParts = explode('&', $query);
+		$params     = array();
+		foreach ($queryParts as $param) {
+			$item             = explode('=', $param);
+			$params[$item[0]] = $item[1];
+		}
+		return $params;
+	}
+	/**
+	 * @param $array_query
+	 * @return string string
+	 */
+	public function getUrlQuery($array_query) {
+		$tmp = array();
+		foreach ($array_query as $k => $param) {
+			$tmp[] = $k.'='.$param;
+		}
+		$params = implode('&', $tmp);
+		return $params;
+	}
+
+}

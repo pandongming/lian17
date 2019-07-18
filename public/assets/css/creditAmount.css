@@ -1,0 +1,140 @@
+.credit_span4{
+			background: #fee2e1;
+			color: #fc766f;
+			position: absolute;
+			right: 0;
+			right: 0.2rem;
+    		bottom: 1rem;
+		}
+		.credit_span3{
+			position: absolute;
+			right: 0;
+			right: 0.2rem;
+    		bottom: 1rem;
+			background: #e3f5de;
+			color: #86d674;
+		}
+		.credit_span2{
+			position: absolute;
+			right: 0;
+			right: 0.2rem;
+    		bottom: 1rem;
+    		background: #fef4dc;
+			color: #fcc850;
+		}
+		.credit_color{
+			color: red;
+		}
+		.credit_p{
+			font-size: 0.5rem;
+			margin-top: 0rem;
+			color: #74a4fd;
+		}
+		.updata_btn_div{
+		text-align: center;
+			
+		}
+		.updata_btn{
+			width: 90%;
+			background: #2974E7;
+			outline:none;
+			border:none;
+			margin: 5% auto;
+		    color: #fff;
+		    height: 1.55rem;
+		    line-height: 1.55rem;
+		    border-radius: 15px;
+		    font-size: 0.6rem;
+		}
+		.credit_li4{
+			position: relative;
+			font-size: 0.2rem;
+			justify-content: center;
+			align-content: center;
+			height: 0.8rem;
+			line-height: 0.8rem;
+		}
+		.credit_span{
+			position: absolute;
+			right: 0;
+			right: 0.2rem;
+    		bottom: 1rem;
+    		background: #d4e3fa;
+			color: #2974e7;
+		}
+		.credit_li3{
+			font-size: 0.4rem;
+			justify-content: center;
+			align-content: center;
+			height: 1.1rem;
+			line-height: 1.1rem;
+			color: #dddddd;
+		}
+		.credit_ul2{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			justify-content: center;
+			align-content: center;
+			height: 0.8rem;
+			flex: 3;
+		}
+		.credit_li2{
+			
+		}
+		.credit_div{
+			width: 95%;
+			margin: 0 auto;
+			
+		}
+		body{
+			background: #f9f9f9;
+		}
+		.credit_ul{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		.credit_li{
+			background-color: #ffffff;
+			width: 100%;
+			height: 4.4rem;
+			margin: 0.3rem 0px;
+			padding-top: 0.5rem;
+			padding-bottom:  0.5rem;
+			display: flex;
+			
+			}
+		.credit_img{
+			height:100%;
+			margin: 0px 0.2rem;
+			display: flex;
+			flex: 1;
+					}
+.dialog_window{
+	width:100%;top: 0;left: 0; background: rgba(0,0,0,0.5);height:100%;position: fixed;display: none;
+}
+.dialog_window_outdiv{
+	width: 90%; top: 20%; position: relative;margin-left: 5%;margin-top: -10%;background: rgb(255, 255, 255);border-radius: 0.8rem;
+}
+.dialog_window_indiv{
+	text-align: center;padding: 1rem 0;
+}
+.dialog_window_img{
+	width: 4rem;height: 4rem;
+}
+.dialog_window_h3{
+	margin-top: 0.1rem;font-weight: 400;
+}
+.dialog_window_p{
+	width: 80%;margin: 0 auto;color: #9b9b9b;font-size: 0.7rem;line-height: 1.2rem;
+}
+.dialog_window_btn{
+	font-size: 0.8rem;margin-top:5%;background: #6098fe;outline: none;border: none;border-radius: 0.9rem;padding:0.4rem 1.8rem;color: #fff;
+}
+.dialog_window_icon{
+	position: relative;width: 2rem;height: 2rem;border-radius: 2rem;font-size: 1rem;border: 1px solid #fff;color: #fff;margin-left: 4%;top: 22%;left: 40%;
+}
+.dialog_window_icon_div{
+	position: relative; left: 35%; top: 18%;font-weight: 100;
+}

@@ -1,0 +1,8 @@
+{
+    "data": [
+    {"Name":"","Account":"商家审核中","image":"./img/credit_img_01.jpg" , "Num":"15482156377","Amount":"358","Type":"二手房","upTime":"2018.08.31"},
+	{"Name":"","Account":"平台审核中", "image":"./img/credit_img_02.jpg" , "Num":"15482156377","Amount":"358","Type":"二手房","upTime":"2018.08.31"},
+    {"Name":"", "Account":"审核通过","image":"./img/credit_img_03.jpg" , "Num":"15482156377","Amount":"358","Type":"二手房","upTime":"2018.08.31"},
+     {"Name":"","Account":"审核失败", "image":"./img/credit_img_04.jpg" , "Num":"15482156377","Amount":"358","Type":"二手房","upTime":"2018.08.31"}
+    ]
+    }

@@ -1,0 +1,80 @@
+body{
+	background-color: #F9F9F9;
+}
+.form{
+	background-color: #fff;
+	padding: 2%;
+	height: auto;
+	overflow:hidden;
+	zoom: 1;
+	font-size: 0.65rem;
+}
+.form a{
+	color:#191919;
+}
+.form li{
+	padding: 1% 2% 1% 2%;
+	list-style: none;
+	height: 1.55rem;
+	line-height: 1.55rem;
+	border-bottom: #DDDDDD dashed 1px;
+}
+.form li label{
+	width: 30%;
+	float: left;
+}
+.form li .cont1{
+	width: 65%;
+	float: left;
+	text-align: right;
+	color: #8C8C8C;
+}
+.form li .smallimg{
+	width: 1.3%;
+	float: right;
+}
+.form li .smallimg2{
+	width: 0.7rem;
+	float: right;
+	display: inline-block;
+	height: 0.7rem;
+}
+.form li .smallimg img, .smallimg2 img{
+	width: 100%;
+}
+.model{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	 height: 100%; 
+	 top: 0;
+	 left: 0;
+	  background-color: #777;
+    z-index: 1;
+    opacity: 0.6;
+    display: none;
+}
+.hide{
+	width: 50%;
+	z-index: 3; 
+	display: none;
+	 position: fixed;
+	 top:25%;
+	 left:23%;
+	 text-align: center;
+	 background-color: #fff;
+	 padding: 3%;
+	 height: 8rem;
+	 overflow: hidden;
+	 zoom:1;
+}
+.hide span{
+	width: 100%;
+	height: 100%;
+	display: block;
+
+}
+.hide span img{
+	width:100%;
+	vertical-align: middle;
+}

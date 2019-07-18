@@ -1,0 +1,164 @@
+body{
+	background-color: #F9F9F9;
+}
+#content{
+	width: 100%;
+	background-color: #F9F9F9;
+	height: auto;
+	padding-bottom:13%;
+}
+
+.head{
+	background: url(../img/banner.jpg) no-repeat center top;
+	background-size: 100%;
+	color: #fff;
+	text-align: center;
+	 height: 5rem; 
+	padding: 5%  7% 5% 7%;
+}
+.head h1{
+	font-size: 0.9rem;
+}
+.head  p{
+	font-size: 0.6rem;
+	margin-top:3%;
+}
+.tximg{
+	width: 3rem;
+	height: 3rem;
+	float: right;
+	margin-top: 5%;
+}
+.tximg img{
+	width: 100%;
+	border-radius: 50px
+}
+.head_right{
+	width: 65%;
+	float: left;
+	text-align: left;
+	margin-top: 5%;
+}
+.img-responsive{
+ display: block;
+  height: auto;
+  max-width: 100%;
+}
+.wrapper{
+	width: 85%;
+	padding: 3%;
+	height: auto;
+	overflow: hidden;
+	zoom: 1;
+	margin: 3% auto;
+	background-color: #fff;
+	border-radius: 5px;
+}
+.wrapper .lis{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	zoom: 1;
+	line-height: 1.9rem;
+	font-size: 0.65rem;
+	color: #666666;
+}
+.wrapper .lis label{
+	width: 26%;
+	float: left
+}
+.wrapper .lis input{
+	width: 70%;
+	height: 1.9rem;
+	line-height: 1.9rem;
+	float: left;
+	border: 0;
+	border-bottom:#E1E1E1 solid 1px ;
+}
+.wrapper .lis input.jj_inpu{
+	height: 5rem;
+}
+.img_group{
+	height: auto;
+	overflow: hidden;
+	zoom: 1;
+	margin-top: 4%;
+}
+.dl_groups{
+	height:auto;
+}
+.dl_groups dl{
+	width:4.34rem;
+	margin-right: 2%;
+	margin-bottom: 2%;
+	float: left;
+	position: relative;
+}
+.dl_groups dl .delet{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 1rem;
+	height: 1rem;
+}
+.dl_groups dl .delet img{
+	width: 100%;
+}
+.dl_groups dl dt{
+	width: 100%;
+	float: left;
+	height: 4rem;
+}
+.dl_groups dl dt img{
+	width: 100%;
+	display: block;
+	border-radius: 5px;
+	height: 100%;
+}
+.adds{
+	width: 4.34rem;
+	float: left;
+	padding-top: 0.55rem;
+	height: 3.45rem;
+	background-color: #ECECEC;
+	font-size:0.55rem ;
+	text-align: center;
+	border-radius: 5px;
+}
+.adds span{
+	display: block;
+	width: 1rem;
+	height: 1rem;
+	margin: 0 auto;
+}
+.adds span img{
+	width: 100%;	
+}
+.adds p{
+	font-size: 0.6rem;
+	color: #A1A1A1;
+}
+::-webkit-input-placeholder { 
+   color: #CFCFCF;
+}
+:-moz-placeholder {
+  color: #CFCFCF;
+}
+::-moz-placeholder { 
+  color: #CFCFCF;
+}
+:-ms-input-placeholder {
+  color: #CFCFCF;
+}
+.tijiao{
+	width: 90%;
+	display: block;
+	margin: 6% auto;
+	height: 1.8rem;
+	line-height: 1.8rem;
+	background-color: #2974E7;
+	color: #fff;
+	border: 0;
+	border-radius: 45px;
+}
+	

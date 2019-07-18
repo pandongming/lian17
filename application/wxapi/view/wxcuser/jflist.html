@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<title>积分详情</title>
+		<link rel="stylesheet" href="__CDN__/assetscss/common.css" type="text/css"/>
+		<link rel="stylesheet" href="__CDN__/assets/css/jflist.css" type="text/css"/>
+		<script type="text/javascript"  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="__CDN__/assets/js/mobilesp.js" ></script>
+        <script type="text/javascript" src="__CDN__/assets/js/jfList.js"></script>
+
+	</head>
+	<body>
+		<div class="body">
+			<div class="head">
+				<a href="personal.html">
+                    <div class="h_box">
+                        <div class="imgbox"><img src="__CDN__/{$user['avatar']}" /> </div>
+                        <div class="head_mid">
+                                <h1>{$user['nickname']}</h1>
+                                <p>圈子ID:<span>{$userId}</span>
+                                    <span class="ew_img"><img src="__CDN__/assets/img/opcityimg.png" /> </span>
+                                </p>
+                        </div>
+                        <div class="imgbox2"><img src="__CDN__/assets/img/jt2.png" /> </div>
+                    </div>
+					<p class="jf">我的积分：<span>345</span> </p>
+                </a>
+            </div>
+            <div id="Wrapper">
+                <div class="list_box" id="scroller">
+                    <div class="status" id="pullDown">
+                        <!-- <span class="pullDownIcon"></span> -->
+                        <span class="pullDownLabel">正在刷新...</span>
+                    </div>
+                    <ul id="ul">
+                        <li>
+                            <span>
+                                我邀请的xxxx，用掉
+                            </span>
+                            <div class="les">
+                                <span class="jian"> -1 </span>
+                            </div>
+                        </li>
+                        <li>
+                            <span>
+                                我邀请的xxxx，获得
+                            </span>
+                            <div class="les">
+                                <span class="jia"> +1 </span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div id="pullUp">
+                        <!-- <span class="pullUpIcon"></span> -->
+                        <span class="pullUpLabel">正在加载...</span>
+                    </div>
+                </div>
+
+            </div>
+		</div>
+	</body>
+</html>
